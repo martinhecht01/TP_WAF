@@ -49,3 +49,9 @@ RUN mv /etc/nginx/modsec/modsecurity.conf-recommended /etc/nginx/modsec/modsecur
 WORKDIR /
 RUN cp ModSecurity/unicode.mapping /etc/nginx/modsec
 RUN sed --i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/' /etc/nginx/modsec/modsecurity.conf
+
+
+
+RUN git clone https://github.com/coreruleset/coreruleset /opt/coreruleset
+RUN mv /opt/coreruleset/crs-setup.conf.example /opt/coreruleset/crs-setup.conf
+RUN mv /opt/coreruleset/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example /opt/coreruleset/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
