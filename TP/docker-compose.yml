@@ -9,4 +9,11 @@ services:
     volumes:
       - ./volumes/main.conf:/etc/nginx/modsec/main.conf
       - ./volumes/nginx.conf:/etc/nginx/nginx.conf
+      - ./volumes/error403.html:/etc/nginx/html/error403.html
+      - ./volumes/forbidden.jpeg:/etc/nginx/html/forbidden.jpeg
+
+  bwapp:
+    image: hackersploit/bwapp-docker
+    container_name: bwapp
+    hostname: bwapp
 
