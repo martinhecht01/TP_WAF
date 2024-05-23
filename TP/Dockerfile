@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libyajl-dev \
     pkgconf \
+    vim \
     wget \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
