@@ -37,7 +37,7 @@ WORKDIR /
 RUN git clone --depth 1 https://github.com/SpiderLabs/ModSecurity-nginx.git
 RUN wget http://nginx.org/download/nginx-1.25.5.tar.gz
 RUN tar zxvf nginx-1.25.5.tar.gz
-WORKDIR ./nginx-1.25.5
+WORKDIR /nginx-1.25.5
 RUN ./configure --with-compat --add-dynamic-module=../ModSecurity-nginx
 RUN make modules
 RUN cp objs/ngx_http_modsecurity_module.so /etc/nginx/modules
@@ -50,7 +50,6 @@ RUN mv /etc/nginx/modsec/modsecurity.conf-recommended /etc/nginx/modsec/modsecur
 WORKDIR /
 RUN cp ModSecurity/unicode.mapping /etc/nginx/modsec
 RUN sed --i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/' /etc/nginx/modsec/modsecurity.conf
-
 
 
 RUN git clone https://github.com/coreruleset/coreruleset /opt/coreruleset
