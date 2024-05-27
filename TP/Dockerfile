@@ -55,3 +55,12 @@ RUN sed --i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/' /etc/nginx/modsec/
 RUN git clone https://github.com/coreruleset/coreruleset /opt/coreruleset
 RUN mv /opt/coreruleset/crs-setup.conf.example /opt/coreruleset/crs-setup.conf
 RUN mv /opt/coreruleset/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example /opt/coreruleset/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
+
+# Configure GeoIP
+RUN mkdir -p /usr/share/GeoIP
+RUN wget -O /usr/share/GeoIP/GeoLite2-Country.tar.gz https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz
+RUN tar -xzf /usr/share/GeoIP/GeoLite2-Country.tar.gz -C /usr/share/GeoIP --strip-components=1
+RUN rm /usr/share/GeoIP/GeoLite2-Country.tar.gz
+
+# Configure ModSecurity with GeoIP
+RUN echo 'SecGeoLookupDb /usr/share/GeoIP/GeoLite2-Country.mmdb' >> /etc/nginx/modsec/modsecurity.conf
