@@ -42,7 +42,7 @@ RUN git clone --depth 1 https://github.com/SpiderLabs/ModSecurity-nginx.git
 RUN wget http://nginx.org/download/nginx-1.25.5.tar.gz
 RUN tar zxvf nginx-1.25.5.tar.gz
 WORKDIR /nginx-1.25.5
-RUN ./configure --with-compat --add-dynamic-module=../ModSecurity-nginx --add-dynamic-module=/etc/nginx/ngx_http_geoip2_module
+RUN ./configure --with-compat --add-dynamic-module=../ModSecurity-nginx 
 RUN make modules
 RUN cp objs/ngx_http_modsecurity_module.so /etc/nginx/modules
 RUN cp objs/ngx_http_geoip2_module.so /etc/nginx/modules
@@ -60,12 +60,3 @@ RUN sed --i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/' /etc/nginx/modsec/
 RUN git clone https://github.com/coreruleset/coreruleset /opt/coreruleset
 RUN mv /opt/coreruleset/crs-setup.conf.example /opt/coreruleset/crs-setup.conf
 RUN mv /opt/coreruleset/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example /opt/coreruleset/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
-
-# Configure GeoIP
-RUN mkdir -p /usr/share/GeoIP
-RUN wget -c "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=SECRET&suffix=tar.gz" -O /usr/share/GeoIP/GeoLite2-Country.tar.gz
-RUN tar -C /usr/share/GeoIP -xzvf /usr/share/GeoIP/GeoLite2-Country.tar.gz --strip-components 1 --wildcards "*.mmdb"
-RUN rm /usr/share/GeoIP/GeoLite2-Country.tar.gz
-
-# Configure ModSecurity with GeoIP
-RUN echo 'SecGeoLookupDb /usr/share/GeoIP/GeoLite2-Country.mmdb' >> /etc/nginx/modsec/modsecurity.conf
