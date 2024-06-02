@@ -45,7 +45,6 @@ WORKDIR /nginx-1.25.5
 RUN ./configure --with-compat --add-dynamic-module=../ModSecurity-nginx 
 RUN make modules
 RUN cp objs/ngx_http_modsecurity_module.so /etc/nginx/modules
-RUN cp objs/ngx_http_geoip2_module.so /etc/nginx/modules
 
 RUN mkdir /etc/nginx/modsec
 
