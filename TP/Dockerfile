@@ -36,8 +36,6 @@ RUN ./configure
 RUN make
 RUN make install
 WORKDIR /
-# Clone GeoIP2 module
-RUN git clone --depth 1 https://github.com/leev/ngx_http_geoip2_module.git /etc/nginx/ngx_http_geoip2_module
 RUN git clone --depth 1 https://github.com/SpiderLabs/ModSecurity-nginx.git
 RUN wget http://nginx.org/download/nginx-1.25.5.tar.gz
 RUN tar zxvf nginx-1.25.5.tar.gz
