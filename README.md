@@ -73,6 +73,8 @@ services:
 ```
 
 En conjunto con el Docker File, podemos utilizar los siguientes comandos para construir y levantar la imagen:
+>[!TIP]
+> Una vez clonado el respositorio debemos ubicarnos dentro de la carpeta TP y dentro de la misma corremos los comandos
 
 ```bash
 docker compose build
