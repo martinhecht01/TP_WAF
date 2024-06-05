@@ -13,7 +13,7 @@ services:
     image: hackersploit/bwapp-docker
     container_name: bwapp
     hostname: bwapp
- web-dvwa:
+  web-dvwa:
     image: vulnerables/web-dvwa
     container_name: web-dvwa
     hostname: web-dvwa
