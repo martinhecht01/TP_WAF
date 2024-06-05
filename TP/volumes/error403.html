@@ -5,64 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>403 Forbidden</title>
     <style>
-        body {
-            background-color: #f2f2f2;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-            background: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .container img {
-            max-width: 200px; /* Adjust the max width to control the image size */
-            height: auto;
-            margin-bottom: 20px;
-        }
-        .container h1 {
-            font-size: 96px;
-            margin: 0;
-            color: #ff6f61;
-        }
-        .container h2 {
-            font-size: 36px;
-            margin: 0;
-            color: #333;
-        }
-        .container p {
-            font-size: 16px;
-            color: #777;
-            margin-top: 20px;
-        }
-        .container a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #ff6f61;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .container a:hover {
-            background-color: #e65b50;
-        }
+       @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+html,body{
+   width: 100%;
+   height: 100%;
+   margin: 0;
+}
+
+*{
+   font-family: 'Press Start 2P', cursive;
+   box-sizing: border-box;
+}
+#app{
+   padding: 1rem;
+   background: black;
+   display: flex;
+   height: 100%;
+   justify-content: center; 
+   align-items: center;
+   color: #54FE55;
+   text-shadow: 0px 0px 10px ;
+   font-size: 6rem;
+   flex-direction: column;
+   .txt {
+      font-size: 1.8rem;
+   }
+}
+@keyframes blink {
+    0%   {opacity: 0}
+    49%  {opacity: 0}
+    50%  {opacity: 1}
+    100% {opacity: 1}
+}
+
+.blink {
+   animation-name: blink;
+    animation-duration: 1s;
+   animation-iteration-count: infinite;
+}
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>403</h1>
-        <h2>Forbidden</h2>
-        <h3>Santiaguito Blog has something to say:</h3>
-        <p>"Sorry, you don't have permission to access this page."</p>
-    </div>
+    <div id="app">
+        <div>403</div>
+        <div class="txt">
+           Forbidden<span class="blink">_</span>
+        </div>
+     </div>
 </body>
 </html>
