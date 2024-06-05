@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     git \
     libcurl4-openssl-dev \
-    libgeoip-dev \
     liblmdb-dev \
     libpcre3-dev \
     libtool \
